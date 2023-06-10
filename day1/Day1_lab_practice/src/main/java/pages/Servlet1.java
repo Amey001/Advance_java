@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 //loadonstartup=-1 its lazy
 //@WebServlet(value="/test1",loadOnStartup=2)  //internally are web servlets
 
-@WebServlet
+@WebServlet("/test1")
 //Wc reads this only once @ web app dep time
 //Wc creates an empty map n then populates URL map
 //key ::test1  value ::pages.Servlet1  (fully qualified servlet class name)

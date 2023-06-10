@@ -8,7 +8,7 @@
   <!-- two parent tags 1.servlet and servlet-mapping-->
   <!--  -->
   	<servlet>
-  		<servlet-name> xyz</servlet-name>
+  		<servlet-name>xyz</servlet-name>
   		<servlet-class> pages.Servlet2</servlet-class>
   		<load-on-startup>1</load-on-startup>
   	</servlet>
