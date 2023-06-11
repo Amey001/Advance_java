@@ -3,6 +3,7 @@ package pojo;
 import java.sql.Date;
 
 public class User {
+//	private static int idcount;
 	private int id;
 	private String firstName;
 	private String lastName;

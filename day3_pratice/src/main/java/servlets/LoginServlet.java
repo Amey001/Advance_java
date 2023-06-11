@@ -85,6 +85,13 @@ public class LoginServlet extends HttpServlet{
 
 	@Override
 	public void destroy() {
+		try {
+			userdao.Cleanup();
+			candidatedaoimpl.Cleanup();
+		}catch(Exception e)
+		{
+		System.out.println("err in destory of "+getClass()+ " " +e);
+		}
 		
 	}
 

@@ -15,13 +15,14 @@ import pojo.User;
 
 public class UserDaoImpl implements UserDao{
 	private Connection cn;
-	private PreparedStatement pst1,pst2;
+	private PreparedStatement pst1,pst2,pst3;
 	
 	public UserDaoImpl() throws SQLException
 	{	
 		cn=openConnection();
 		pst1=cn.prepareStatement("select * from users where email=? and password=?");
 		pst2=cn.prepareStatement("update users set status=1 where id=?");
+		pst3=cn.prepareStatement("insert into users values(default,?,?,?,?,?,0,'voter')");
 		System.out.println("User dao created !!");		
 	}
 
@@ -41,6 +42,21 @@ public class UserDaoImpl implements UserDao{
 		}
 		
 		return null;
+	}
+	
+	@Override
+	public String addusers(String fname,String lname,String email,String password,Date dob1) throws SQLException {
+		pst3.setString(2,fname);
+		pst3.setString(3, lname);
+		pst3.setString(4, email);
+		pst3.setString(5, password);
+		pst3.setDate(6, dob1);
+		System.out.println("at line 54 !!! of userdao !!");
+		int insertcount=pst3.executeUpdate();
+		if(insertcount==1)
+			return "data inserted successfully";
+		return " failed to add data";
+		
 	}
 
 	@Override
@@ -66,4 +82,6 @@ public class UserDaoImpl implements UserDao{
 		closeConnection();
 		System.out.println("userdao cleaned up successfully !!!");
 	}
+
+	
 }
