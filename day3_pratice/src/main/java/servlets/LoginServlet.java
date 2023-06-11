@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet{
 				else {
 					if(user.isVotingStatus())
 					{
-						resp.sendRedirect("Logout");
+						resp.sendRedirect("logout");
 					}
 					else {
 						resp.sendRedirect("candidate_list");

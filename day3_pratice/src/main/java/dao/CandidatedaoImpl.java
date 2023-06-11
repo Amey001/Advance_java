@@ -1,6 +1,7 @@
 package dao;
 
 import static utils.Dbutils.openConnection;
+import static utils.Dbutils.closeConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,8 @@ public class CandidatedaoImpl implements CandidateDao{
 	{
 		cn=openConnection();
 		pst1=cn.prepareStatement("select * from candidates");
-//		pst2=cn.prepareStatement("");
+		pst2=cn.prepareStatement("update candidates set votes=votes+1 where id=?");
+		System.out.println("candidatedao impl successfully ");
 		
 	}
 	
@@ -39,9 +41,30 @@ public class CandidatedaoImpl implements CandidateDao{
 	}
 
 	@Override
-	public String incrementCandidateVotes(int candidateId) {
-		return null;
+	public String incrementCandidateVotes(int candidateId) throws SQLException {
+		pst2.setInt(1, candidateId);
+		int updatedcount=pst2.executeUpdate();
+		if(updatedcount==1)
+		{
+			return " voter Count updated Successfully !!!";
+		}
+		else {
+			return " failed incrementing count !!";
+		}
 	}
-	
 
+
+	public void Cleanup() throws SQLException
+	{
+		if(pst1 != null)
+		{
+			pst1.close();
+		}
+		if(pst2 != null)
+		{
+			pst2.close();
+		}
+		closeConnection();
+		System.out.println("candidate dao cleaned up Succesffully !!");	
+	}
 }

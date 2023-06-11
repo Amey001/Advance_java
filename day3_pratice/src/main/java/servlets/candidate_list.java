@@ -36,7 +36,7 @@ public class candidate_list extends HttpServlet {
 			User userdetails=(User)hs.getAttribute("user_details");
 			if(userdetails!=null)
 			{
-				pw.print("<h5>"+ "Hello"+userdetails.getFirstName()+userdetails.getLastName()+"</h5>");
+				pw.print("<h2>"+ "Hello "+userdetails.getFirstName()+userdetails.getLastName()+"</h2>");
 				
 				CandidatedaoImpl dao=(CandidatedaoImpl)hs.getAttribute("candidate_daoimpl");
 				List<Candidate> candidatelist=dao.allcandidatelist();
@@ -44,9 +44,12 @@ public class candidate_list extends HttpServlet {
 				pw.print("<form action='logout'>");
 				for(Candidate c:candidatelist)
 				//creating dynamic form
-				pw.print("<h2><input type='radio' name='cid' value='"+c.getCandidateId()+"'/>"+c.getName()+"</h2>");
-				pw.print("<input type='Submit' value='Cast a Vote'>");
+				pw.print("<h4><input type='radio' name='cid' value='"+c.getCandidateId()+"'/>"+c.getName()+"</h4>");
+				pw.print("<h4><input type='Submit' value='Cast a Vote'></h4>");
 				pw.print("</form>");
+			}
+			else {
+				System.out.println("Sesion Tracking Failed !!,No Cookies...");
 			}
 			
 			

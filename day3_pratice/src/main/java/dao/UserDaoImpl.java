@@ -21,6 +21,7 @@ public class UserDaoImpl implements UserDao{
 	{	
 		cn=openConnection();
 		pst1=cn.prepareStatement("select * from users where email=? and password=?");
+		pst2=cn.prepareStatement("update users set status=1 where id=?");
 		System.out.println("User dao created !!");		
 	}
 
@@ -43,8 +44,26 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public String updateVotingStatus(int voterid) {
+	public String updateVotingStatus(int voterid) throws SQLException {
+		pst2.setInt(1, voterid);
+		int count=pst2.executeUpdate();
+		if(count==1)
+		{
+			return "voted Successfully !!!";
+		}
+		else {
+			return " failed Voting !!";
+		}
+	}
+	
+	public void Cleanup() throws SQLException
+	{
+		if(pst1 != null)
+			pst1.close();
+		if(pst2 != null)
+			pst2.close();
 		
-		return null;
+		closeConnection();
+		System.out.println("userdao cleaned up successfully !!!");
 	}
 }
