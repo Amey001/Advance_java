@@ -1,0 +1,33 @@
+create table iplteams(
+id int NOT NULL AUTO_INCREMENT,
+name varchar(50) NOT NULL,
+PRIMARY KEY (id)
+);
+
+insert into iplteams values(1,'Mumbai Indians');
+insert into iplteams values(2,'Chennai Super Kings');
+insert into iplteams values(3,'Kolkata Knight Riders');
+insert into iplteams values(4,'Royal Challengers Bangalore');
+insert into iplteams values(5,'Rajasthan Royals');
+
+insert into iplteams values(6,'Delhi Capitals');
+
+insert into iplteams values(7,'Punjab Kings');
+insert into iplteams values(8,'Sunrisers Hyderabad');
+
+------------------------------------------------------------------------------------------------
+
+Table :: Players
+
+CREATE TABLE players (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  team_id INT,
+  FOREIGN KEY (team_id) REFERENCES iplteams(id),
+  name VARCHAR(50),
+  dob Date,
+  battingAverage double,
+  wickets int
+
+);
+
+insert into players values(1,1,'asb','1999-01-01',50.6,23);
