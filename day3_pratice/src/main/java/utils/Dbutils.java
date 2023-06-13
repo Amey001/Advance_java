@@ -10,7 +10,7 @@ public class Dbutils {
 	public static Connection openConnection() throws SQLException
 	{
 		String dburl="jdbc:mysql://localhost:3306/advjava?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true";
-		cn=DriverManager.getConnection(dburl,"root","root123");
+		cn=DriverManager.getConnection(dburl,"root","root@123");
 		System.out.println("connection is done Successfully");
 		return cn;
 		

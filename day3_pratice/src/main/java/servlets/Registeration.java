@@ -58,8 +58,8 @@ public class Registeration extends HttpServlet {
 			int remaining=18-age;
 			
 			
-			HttpSession hs=req.getSession();
-			UserDaoImpl userdaoimpl=(UserDaoImpl)hs.getAttribute("user_daoimpl");
+//			HttpSession hs=req.getSession();
+//			UserDaoImpl userdaoimpl=(UserDaoImpl)hs.getAttribute("user_daoimpl");
 			if(password.equals(confirmpasword))
 			{
 				if(age>18)
@@ -85,12 +85,13 @@ public class Registeration extends HttpServlet {
 
 	@Override
 	public void destroy() {
-		
+		try {
+			userdaoimpl.Cleanup();
+		}
+		catch(Exception e)
+		{
+			System.out.println(" error in destroy "+e.getMessage());
+		}
 		
 	}
-
-	
-		
-	
-	
 }

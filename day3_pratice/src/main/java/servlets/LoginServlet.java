@@ -79,10 +79,8 @@ public class LoginServlet extends HttpServlet{
 		{
 			throw new ServletException("err in do post of "+getClass(),e);
 		}
-		
-		
 	}
-
+	
 	@Override
 	public void destroy() {
 		try {
@@ -94,8 +92,5 @@ public class LoginServlet extends HttpServlet{
 		}
 		
 	}
-
-	
-	
 
 }

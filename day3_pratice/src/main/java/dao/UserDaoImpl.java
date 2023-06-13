@@ -46,11 +46,12 @@ public class UserDaoImpl implements UserDao{
 	
 	@Override
 	public String addusers(String fname,String lname,String email,String password,Date dob1) throws SQLException {
-		pst3.setString(2,fname);
-		pst3.setString(3, lname);
-		pst3.setString(4, email);
-		pst3.setString(5, password);
-		pst3.setDate(6, dob1);
+		pst3.setString(1,fname);
+		pst3.setString(2, lname);
+		pst3.setString(3, email);
+		pst3.setString(4, password);
+		pst3.setDate(5, dob1);
+		
 		System.out.println("at line 54 !!! of userdao !!");
 		int insertcount=pst3.executeUpdate();
 		if(insertcount==1)
