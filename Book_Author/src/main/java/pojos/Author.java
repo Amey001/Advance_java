@@ -78,6 +78,14 @@ public class Author extends BaseEntity {
 		this.booklist = booklist;
 	}
 
+	public String addnewBook(Book b)
+	{
+		booklist.add(b);
+		b.setBookauthor(this);
+		
+		return " new book added successfully";
+	}
+	
 	@Override
 	public String toString() {
 		return "Author [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password="
