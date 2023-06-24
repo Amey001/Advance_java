@@ -14,7 +14,8 @@ public class IPLBean {
 	private String lastName;
 	private Date dob;
 	private double battingavg;
-	private 
+	
+	 
 	
 	public IPLBean() {
 		//dao instace

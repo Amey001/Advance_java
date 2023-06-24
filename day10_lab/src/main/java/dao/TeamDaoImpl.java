@@ -10,25 +10,6 @@ import org.hibernate.Transaction;
 import pojos.Team;
 
 public class TeamDaoImpl implements TeamDao {
-
-	@Override
-	public Team getTeamdetails(long id) {
-		Team team=new Team();
-		// 1 get session from SF
-		Session session = getFactory().getCurrentSession();
-		// 2. begin a tx
-		Transaction tx = session.beginTransaction();
-		try {
-			team=session.get(Team.class, id);								
-			tx.commit(); 
-		} catch (RuntimeException e) {
-			if (tx != null)
-				tx.rollback();
-			throw e;
-		}
-		return team;
-	}
-
 	@Override
 	public String addnewteam(Team team) {
 		String mesg = "team add failed !!!";
@@ -50,6 +31,25 @@ public class TeamDaoImpl implements TeamDao {
 		
 		return mesg;
 	}
+
+	@Override
+	public Team getTeamdetails(long id) {
+		Team team=new Team();
+		// 1 get session from SF
+		Session session = getFactory().getCurrentSession();
+		// 2. begin a tx
+		Transaction tx = session.beginTransaction();
+		try {
+			team=session.get(Team.class, id);								
+			tx.commit(); 
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		}
+		return team;
+	}
+
 
 	
 	@Override
