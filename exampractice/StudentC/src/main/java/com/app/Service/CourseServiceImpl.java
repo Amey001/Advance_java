@@ -9,8 +9,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.CustomException.ResourceNotFoundExcept;
+import com.app.Dto.ApiResponse;
 import com.app.Dto.CourseDto;
 import com.app.entities.Course;
+import com.app.entities.CourseType;
 import com.app.repository.CourseRepo;
 
 @Service
@@ -42,6 +45,29 @@ public class CourseServiceImpl implements CourseService{
 //		Course c1=new Course(c.getCoursename(), c.getStartDate(),c.getEndDate(),c.getFees(), c.getMinScore());
 		Course newc=mapper.map(c,Course.class);
 		return crepo.save(newc);
+	}
+
+	@Override
+	public ApiResponse delete(Long id) {
+		
+		
+		 crepo.deleteById(id);
+		 return new ApiResponse("deleted succesfully ");
+		 
+	}
+
+	@Override
+	public Course getCourse(CourseType coursename) {
+	 Course course=crepo.findByCoursename(coursename).orElseThrow(()->new ResourceNotFoundExcept("cannot fetch course by category name"));
+	return course;
+	
+	}
+
+	@Override
+	public Course updatebyid(Long id, int fee) {
+		Course course=crepo.findById(id).orElseThrow(()->new ResourceNotFoundExcept("cannot fetch course !!"));
+		course.setFees(fee);
+		return course;
 	}
 
 	

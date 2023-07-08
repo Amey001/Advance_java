@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +22,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "student")
+@JsonIgnoreType
 public class Student extends baseEntity{
 	@Column(unique = true,name = "stud",length = 20)
 	private String studname;

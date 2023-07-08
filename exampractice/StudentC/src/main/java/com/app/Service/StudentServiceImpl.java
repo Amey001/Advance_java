@@ -3,11 +3,12 @@ package com.app.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.app.CustomException.ResourceNotFoundExcept;
 import com.app.Dto.StudentDto;
@@ -62,9 +63,18 @@ public class StudentServiceImpl implements StudentService{
 		return srepo.save(stud);
 	}
 
-
-
-	
-	
+	@Override
+	public String deletebyid(Long sid) {
+		String mesg="cannot delete the student !!!";
+		System.out.println("id in Service :: "+sid);
+		if(srepo.existsById(sid))
+		{
+			System.out.println("check1");
+			srepo.deleteById(sid);
+			mesg="deleted successfully !!";
+		}
+		System.out.println("check2");
+		return mesg;
+	}
 
 }

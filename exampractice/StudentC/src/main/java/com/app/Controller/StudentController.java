@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.Dto.ApiResponse;
 import com.app.Dto.StudentDto;
 
 import com.app.Service.StudentService;
@@ -49,6 +51,13 @@ public class StudentController {
 	public Student updateStudent(@PathVariable Long id,@PathVariable double score)
 	{
 		return sService.updateStudent(id, score);
+	}
+	
+	@DeleteMapping("/{sid}")
+	public ApiResponse deleteStudent(@RequestBody @PathVariable Long sid)
+	{
+		System.out.println("id in controller :: "+sid);
+		return new ApiResponse(sService.deletebyid(sid));
 	}
 
 }

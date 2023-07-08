@@ -17,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class CourseDto {
-	
+
 	private CourseType coursename;
 	
 	private LocalDate startDate;
