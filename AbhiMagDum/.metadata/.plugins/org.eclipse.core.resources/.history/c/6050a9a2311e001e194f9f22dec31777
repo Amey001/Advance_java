@@ -1,0 +1,20 @@
+package com.app.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.entitries.Hero;
+import com.app.repository.HeroRepository;
+
+public class HeroServiceImpl implements HeroService
+{
+	@Autowired
+	private HeroRepository heroRepo;
+	@Override
+	public List<Hero> getAllHeros() {
+		// TODO Auto-generated method stub
+		return heroRepo.findAll();
+	}
+
+}

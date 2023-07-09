@@ -1,0 +1,12 @@
+package com.app.Dto;
+
+import com.app.entitries.Hero;
+import com.app.entitries.MovieType;
+
+public class MovieDto 
+{
+	private String moviename;
+	  private double budget;
+	  private MovieType movietype;
+	  private Hero hero;
+}

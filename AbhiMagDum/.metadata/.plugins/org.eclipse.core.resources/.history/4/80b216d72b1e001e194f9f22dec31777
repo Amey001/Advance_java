@@ -1,0 +1,32 @@
+package com.app.entitries;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Table(name="movies")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Movie
+{
+	@Column(name="movie_name",unique = true)
+  private String moviename;
+	@Column(name="budget",length = 20)
+  private double budget;
+  private MovieType movietype;
+  @ManyToOne
+  private Hero hero;
+  
+  
+}
